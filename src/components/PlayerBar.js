@@ -6,13 +6,13 @@ class PlayerBar extends Component {
     		<section className="fg-row clearfix">
     			<section id="buttons">          			
            			<button id="previous" onClick={this.props.handlePrevClick}>
-             			<span className="fas fa-fast-backward"></span>
+             			<span className="ion-skip-backward"></span>
            			</button>
            			<button id="play-pause" onClick={this.props.handleSongClick} >
-             			<span className={this.props.isPlaying ? "fas fa-pause" : "fas fa-play-circle"}></span>
+             			<span className={this.props.isPlaying ? "ion-pause" : "ion-play"}></span>
            			</button>
            			<button id="next" onClick={this.props.handleNextClick}>
-             			<span className="fas fa-fast-forward"></span>
+             			<span className="ion-skip-forward"></span>
            			</button>
          		</section>
 
@@ -31,7 +31,7 @@ class PlayerBar extends Component {
          		</section>
 
          		<section id="volume-control">
-           			<span className="fas fa-volume-down"></span>
+           			<span className="ion-volume-low"></span>
 	           			<input
 	           				id="player-volume" 
 	           				type="range" 
@@ -41,7 +41,7 @@ class PlayerBar extends Component {
 	           				max="1" 
 	           				step="0.1" 
 	           				onChange={this.props.handleVolume} />
-	           		<span className="fas fa-volume-up"></span>
+	           		<span className="ion-volume-high"></span>
          		</section>
        		</section>
     	);

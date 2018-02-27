@@ -48,6 +48,7 @@ body {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	counter-reset: songIndex;
 }
 th, td {
 	border-bottom:1px solid #c8c8c8;
@@ -318,6 +319,24 @@ h3.artist{
 }
 table#song-list {
 	width:100%;
+	font-size:1.25em;
+	margin-top:30px;
+}
+table#song-list button {
+	font-weight:bold;
+}
+table#song-list button:hover {
+	font-weight:bold;
+}
+.song-number {
+	counter-increment: songIndex;
+}
+span.song-number:after {
+	content:counter(songIndex, decimal);
+}
+span.song-number:hover:after {
+	content: '\f215';
+	font-family:"Ionicons";
 }
 .player-bar {
 	position:fixed;
@@ -335,10 +354,23 @@ table#song-list {
 }
 #volume-control {
 	margin-top:20px;
+	color:#ccc;
+}
+#time-control {
+	width:100%;
 }
 #play-pause {
-	color:white;
-	font-size:3em;
+	margin:0 20px;
+	text-align:center;
+	height:50px;
+	width:50px;
+	border-radius:50%;
+	background:#fff;
+	color:#333;
+	font-size:1.75em;
+}
+#play-pause:hover{
+	opacity:0.7;
 }
 #previous, #next {
 	color:#ccc;
@@ -346,22 +378,28 @@ table#song-list {
 	border:none;
 	font-size:1.5em;
 }
-.fa-volume-up, .fa-volume-down, #player-volume, .current-time, .total-time, .seek-bar .time, #buttons button {
+#previous:hover, #next:hover {
+	opacity:0.7;
+}
+.ion-volume-high, .ion-volume-low, #player-volume, .current-time, .total-time, .seek-bar .time, #buttons button {
 	vertical-align: middle;
 }
-.fa-volume-up, .fa-volume-down {
+.ion-volume-high, .ion-volume-low {
 	color:#ccc;
 }
-.fa-volume-up {
+.ion-volume-high:hover, .ion-volume-low:hover {
+	opacity:0.7;
+}
+.ion-volume-high {
 	padding-left:10px;
 }
-.fa-volume-down {
+.ion-volume-low {
 	padding-right:10px;
 }
 .current-time, .total-time, .seek-bar .time {
 	display:inline;
 	color:#fff;
-	font-size:1.5em;
+	font-size:1em;
 }
 .seek-bar {	
 	background:rgba(50, 50, 50, 0.9);
@@ -373,10 +411,10 @@ table#song-list {
 	padding-right:20px;
 	text-align:right;
 	display:inline-block;
-	width:100px;
+	width:65px;
 }
 .total-time {
-	width:200px;
+	width:65px;
 	padding-left:20px;
 }
 input[type=range].time {
