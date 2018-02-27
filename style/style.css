@@ -1,0 +1,725 @@
+/* 
+	Flannel Reset
+		AUTHOR 		Amy Coleman
+		COMPANY		Flannel Studios
+		URL 		http://flannelstudios.com/	
+		GIT REPO	https://github.com/amyworks/
+		LICENSE		GNU General Public License 3.0
+*/
+
+	/*
+		FONT NAME QUICK REFERENCE
+		https://use.typekit.net/fmv8kon.css
+		
+		Normal:		"omnes-pro", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		Heading:	"flood-std", "omnes-pro", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+	*/
+@import url("https://use.typekit.net/fmv8kon.css");
+html, body, embed, iframe, object, code, header, footer, nav, section, article, aside, details, summary, hgroup, 
+a, img, canvas, figure, audio, video, mark, time, div, p, span, menu, ul, ol, li, dd, dt, dl,
+h1, h2, h3, h4, h5, h6, pre, big, small, strong, sub, sup, em, del, ins, var, b, u, i,
+blockquote, cite, caption, figcaption, q, dfn, abbr, acronym, address, form, label, fieldset, kbd, output,
+table, legend, tbody, thead, tfoot, tr, th, td, ruby {
+	/* Margin, padding, border */
+	margin: 0; padding: 0; border: 0;
+	/* Font */
+	font-family:'omnes-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+	font-size: 1em;
+	text-align:left;
+	/* Alignment */
+	vertical-align: baseline;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+header, hgroup, footer, nav, section, article, aside, menu, details, figcaption, figure {
+	display: block;
+}
+
+/* Basic Formatting */
+body {
+	line-height: 1;
+	color:#484848;
+	background:  #ededed;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	counter-reset: songIndex;
+}
+th, td {
+	border-bottom:1px solid #c8c8c8;
+	padding:15px 0;
+}
+tr:last-child {
+	border-bottom:none;
+}
+
+/* Deprecated elements */ 
+center, tt, b, u, i, basefont, font, dir, applet, isindex, menu, s, strike, plaintext, listing, xmp {
+	margin:0; padding:0; border:0; vertical-align: baseline;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	CLASS HELPERS
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.block{display:block;}
+.inline {display:inline;}
+.rounded-border {border-radius:10px;}
+.float-left{float:left;}
+.float-right{float:right;}
+.clearfix::after { /* clears a floated element -- see https://www.w3schools.com/howto/howto_css_clearfix.asp for details */
+	content: "";
+    clear: both;
+    display: table;
+}
+.element-center {margin:0 auto !important;}
+.text-center{text-align:center;}
+.text-right {text-align: right;}
+.padded {padding:30px;}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	TYPOGRAPHY STYLING
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* --------------------------------- 
+   Normal Text 
+   --------------------------------- */
+p {
+	font-size:1.15em;
+	line-height: 1.5em;
+}
+a {
+	text-decoration:none;
+}
+button {	
+	background:transparent;
+	border:none;
+}
+
+/* --------------------------------- 
+   Headings 
+   --------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	text-decoration: none;
+}
+h1 {
+	font-family: 'flood-std';
+	font-size:3em;
+	color:#f4426b;
+	padding:30px;
+}
+h2 {
+	font-family: 'omnes-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:5em;
+	margin:40px 0 60px 0;
+	padding:0 0 0 0;
+	text-align:center;
+}
+h3 {
+	font-family: 'omnes-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:2em;
+	color:#f4426b;
+	padding:0 0 10px 0;
+	text-transform: uppercase;
+	font-weight:bold;
+}
+h4 {
+	font-family: 'omnes-pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-style:italic;
+	font-size:1em;
+}
+h5 {
+	font-family: "omnes-pro", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:.75em;
+	padding:0 0 0 0;
+}
+h6 {
+	font-family: "omnes-pro", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:.5em;
+	padding:0 0 0 0;
+}
+
+/* --------------------------------- 
+   Emphasizing 
+   --------------------------------- */
+strong, b {
+	font-weight:bold; /* change to value >100 or use {font-family: font-name-weight} */
+}
+em, i {
+	font-style:italic;  /* change to {font-family: font-name-style} */
+}
+.underline {
+	text-decoration:underline;
+}
+
+/* --------------------------------- 
+   Lists 
+   --------------------------------- */
+ol {
+	list-style-type: decimal;
+	margin:0 0 0 40px;
+}
+ul {
+	list-style-type: disc;
+	margin:0 0 0 40px;
+}
+li {
+	line-height:1.5em;
+	padding:0 0 20px 0;
+}
+li:last-child {
+	padding:0 0 20px 0;
+}
+
+/* ---------------------------------
+   Quoting, citing, and highlighting 
+   --------------------------------- */
+sub, sup {
+	font-size:.5em;
+	padding-left:2px;
+}
+sub {  /* subscript styling */
+	vertical-align:sub;
+}
+sup { /* superscript styling */
+	vertical-align:super;
+}
+blockquote {
+	quotes:none;
+}
+blockquote:before, blockquote:after {
+	content: none;
+}
+q {
+	quotes:'"' '"' "'" "'";
+}
+q:before {
+	content:open-quote;
+}
+q:after {
+	content:close-quote;
+}
+.highlight {background:#ffee00;}
+
+img {
+	max-width:100%;
+	padding-bottom: 20px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	ELEMENT HELPERS
+
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* ---------------------------------
+   Header and footer 
+   --------------------------------- */
+footer p {
+	margin:50px 0;
+	text-align: center;
+	font-size:1em;
+}
+
+/* ---------------------------------
+   Header navigation 
+   --------------------------------- */
+nav.main-nav {
+	float:right;
+}
+nav.main-nav ul {
+	list-style: none;
+	margin: -60px 30px 0 0;
+}
+nav.main-nav ul li {
+	float:left;
+	line-height:1em;
+	padding:0 50px 0 0;
+}
+nav.main-nav ul li:last-child{
+	padding:0 0 0 0;
+}
+nav.main-nav ul li a {
+	color:#f4426b;;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/*==============================================
+
+	Custom Classes
+
+  ==============================================*/
+
+.page-header, .selling-points {
+	margin-bottom:30px !important;
+}
+.page-header {
+	padding:20px 0 0 0;
+}
+.page-header h2 img {
+	padding:0;
+	margin-left:20px;
+	height:50px;
+	width:73px;
+}
+.album {
+	margin:40px 0 200px 0;
+}
+.point-description {
+	margin-bottom:30px;
+}
+.album-info {
+	text-align:center;
+}
+.album-info a h3 {
+	color:#484848;
+	text-decoration: none;
+	border:none;
+	padding:20px 0;
+	text-align:center;
+	font-weight:normal;
+}
+.album-info a .album-artist {
+	font-weight:bold;
+	font-size:1.25em;
+	color:#484848;
+	text-align:center;
+}
+.album-info a .album-songs {
+	font-style:italic;
+	color:#484848;
+	text-align:center;	
+}
+.album-info a h3:hover, .album-info p:hover {
+	background:#fff;
+}
+.album-info img:hover {
+	opacity:.7;
+}
+h2#album-title {
+	text-align:left;
+	font-size:3em;
+	margin:60px 0 30px 0;
+	text-transform: uppercase;
+}
+h3.artist{
+	color:#484848;
+	text-transform: none;
+}
+table#song-list {
+	width:100%;
+	font-size:1.25em;
+	margin-top:30px;
+}
+table#song-list button {
+	font-weight:bold;
+}
+table#song-list button:hover {
+	font-weight:bold;
+}
+.song-number {
+	counter-increment: songIndex;
+}
+span.song-number:after {
+	content:counter(songIndex, decimal);
+}
+span.song-number:hover:after {
+	content: '\f215';
+	font-family:"Ionicons";
+}
+.player-bar {
+	position:fixed;
+	bottom:0;
+	width:100%;
+	background:rgba(50, 50, 50, 0.9);
+	text-align:center;
+	padding:20px 0;
+}
+#buttons, #time-control, #volume-control {
+	text-align: center;
+}
+#buttons {
+	margin-bottom:20px;
+}
+#volume-control {
+	margin-top:20px;
+	color:#ccc;
+}
+#time-control {
+	width:100%;
+}
+#play-pause {
+	margin:0 20px;
+	text-align:center;
+	height:50px;
+	width:50px;
+	border-radius:50%;
+	background:#fff;
+	color:#333;
+	font-size:1.75em;
+}
+#play-pause:hover{
+	opacity:0.7;
+}
+#previous, #next {
+	color:#ccc;
+	background:transparent;
+	border:none;
+	font-size:1.5em;
+}
+#previous:hover, #next:hover {
+	opacity:0.7;
+}
+.ion-volume-high, .ion-volume-low, #player-volume, .current-time, .total-time, .seek-bar .time, #buttons button {
+	vertical-align: middle;
+}
+.ion-volume-high, .ion-volume-low {
+	color:#ccc;
+}
+.ion-volume-high:hover, .ion-volume-low:hover {
+	opacity:0.7;
+}
+.ion-volume-high {
+	padding-left:10px;
+}
+.ion-volume-low {
+	padding-right:10px;
+}
+.current-time, .total-time, .seek-bar .time {
+	display:inline;
+	color:#fff;
+	font-size:1em;
+}
+.seek-bar {	
+	background:rgba(50, 50, 50, 0.9);
+}
+.times {	
+	width:200px;
+}
+.current-time {
+	padding-right:20px;
+	text-align:right;
+	display:inline-block;
+	width:65px;
+}
+.total-time {
+	width:65px;
+	padding-left:20px;
+}
+input[type=range].time {
+	width:60%;
+}
+input[type=range]{
+    -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 5px;
+    background: #ccc;
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 3px solid #484848;
+    height: 32px;
+    width: 16px;
+    background: #fff;
+    margin-top: -13px;
+    border-radius:10px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ebebeb;
+}
+
+				input[type=range]#player-volume::-webkit-slider-runnable-track {
+				    height: 5px;
+				    background: #222;
+				    border: none;
+				    border-radius: 3px;
+				}
+
+				input[type=range]#player-volume::-webkit-slider-thumb {
+				    -webkit-appearance: none;
+				    border: 3px solid #484848;
+				    height: 20px;
+				    width: 20px;
+				    background: #fff;
+				    margin-top: -8px;
+				    border-radius:10px;
+				}
+
+				input[type=range]#player-volume:focus {
+				    outline: none;
+				}
+
+				input[type=range]#player-volume:focus::-webkit-slider-runnable-track {
+				    background: #ccc;
+				}
+
+/*==============================================
+
+  ==============================================*/
+
+/* 
+	Flannel Grid
+		AUTHOR 		Amy Coleman
+		COMPANY		Flannel Studios
+		URL 		http://flannelstudios.com/	
+		GIT REPO	https://github.com/amyworks/
+		LICENSE		GNU General Public License 3.0
+*/
+
+/* -----------------------
+	Normalize
+   ----------------------- */
+
+.fg-row {
+	max-width:1000px;
+	margin:0 auto;
+}
+.fg-row-padded {
+	max-width:1200px;
+	margin: 30px auto;
+}
+.fg-row-padded h2:nth-child(2) {
+	padding-top:100px;
+}
+.fg-col {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float:left;
+}
+.fg-col-padded {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float:left;
+	padding:20px;
+}
+.full-width {
+	width:100%;
+	margin:0 auto;
+}
+
+
+/* -----------------------
+	Half columns
+   ----------------------- */
+.half, .two-quarter, .three-sixth {
+	width:47%;	
+	margin-right:6%;
+}
+.half:last-child, .two-quarter:last-child, .three-sixth:last-child {
+	margin-right:0;
+}
+
+/* -----------------------
+	Third columns
+   ----------------------- */
+.third, .two-sixth {
+	width:29.33%;	
+	margin-right:6%;
+}
+.two-third, .four-sixth {
+	width:64.66%;
+	margin-right:6%;
+}
+.third:last-child, .two-sixth:last-child {
+	width:29.34%;
+	margin-right:0;
+}
+.two-third:last-child, .four-sixth:last-child {
+	width:64.67%;
+	margin-right:0;
+}
+
+/* -----------------------
+	Quarter columns
+   ----------------------- */
+.quarter {
+	width:20.5%;	
+	margin-right:6%;
+}
+.three-quarter {
+	width:73.5%;
+	margin-right:6%;
+}
+.quarter:last-child, .three-quarter:last-child {
+	margin-right:0;
+}
+
+/* -----------------------
+	Fifth columns
+   ----------------------- */
+.fifth {
+	width:16%;	
+	margin-right:5%;
+}
+.two-fifth {
+	width:37%;
+	margin-right:5%;
+}
+.three-fifth {
+	width:58%;
+	margin-right:5%;
+}
+.four-fifth {
+	width:79%;
+	margin-right:5%;
+}
+.fifth:last-child, .two-fifth:last-child, .three-fifth:last-child, .four-fifth:last-child {
+	margin-right:0;
+}
+
+/* -----------------------
+	Sixth columns
+   ----------------------- */
+.sixth {
+	width:11.66%;	
+	margin-right:6%;
+}
+.five-sixth {
+	width:82.33%;
+	margin-right:6%;
+}
+.sixth:last-child {
+	width:11.67%;
+	margin-right:0;
+}
+.five-sixth:last-child {
+	width:82.34%;
+	margin-right:0;
+}
+
+
+
+/*==============================================
+
+	RESPONSIVE TWEAKS
+
+  ==============================================*/
+
+/* -----------------------
+	Tablets - Landscape
+   ----------------------- */
+@media screen and (max-width: 1199px) {
+	.fg-row {
+		margin:0 50px;
+	}
+	.third, .two-sixth, .two-third, .four-sixth, .sixth, .five-sixth {
+		width:29.33%;	
+		margin-right:6%;
+	}
+	.third:last-child, .two-sixth:last-child, .two-third:last-child, .four-sixth:last-child, .sixth:last-child, .five-sixth:last-child {
+		margin-right:0;
+	}
+	.quarter, .three-quarter, .fifth, .two-fifth, .three-fifth, .four-fifth {
+		width:47%;
+		margin-right:6%;
+	} 
+	.quarter:last-child, .three-quarter:last-child, .fifth:last, .two-fifth:last-child, .three-fifth:last-child, .four-fifth:last-child {
+		margin-right:0;
+	}
+
+}
+
+/* -----------------------
+	Tablets - Portrait
+   ----------------------- */
+@media screen and (max-width: 960px) {
+	.fg-row {
+		margin:0 30px;
+	}
+	.third:last-child, .two-sixth:last-child, .two-third:last-child, .four-sixth:last-child, .quarter:last-child, .three-quarter:last-child, 
+	.fifth:last-child, .two-fifth:last-child, .three-fifth:last-child, .four-fifth:last-child, .sixth:last-child, .five-sixth:last-child {
+		margin-right:0;
+	}
+	/* CUSTOM ELEMENTS */
+	h3 {
+		font-size: 1.5em;
+	}
+}
+
+/* -----------------------
+	Smartphones - Landscape
+   ----------------------- */
+@media screen and (max-width: 780px) {
+	.fg-row {
+		margin:0 30px;
+	}
+	.half, .two-quarter, .three-sixth, .third, .two-sixth, .two-third, .four-sixth, .quarter, 
+	.three-quarter, .fifth, .two-fifth, .three-fifth, .four-fifth, .sixth, .five-sixth,
+	.half:last-child, .two-quarter:last-child, .three-sixth:last-child, .third:last-child, 
+	.two-sixth:last-child, .two-third:last-child, .four-sixth:last-child, .quarter:last-child, 
+	.three-quarter:last-child, .fifth:last-child, .two-fifth:last-child, .three-fifth:last-child, 
+	.four-fifth:last-child, .sixth:last-child, .five-sixth:last-child  {
+		width:100%;
+	}
+	.third:last-child, .two-sixth:last-child, .two-third:last-child, .four-sixth:last-child, .quarter:last-child, .three-quarter:last-child, 
+	.fifth:last-child, .two-fifth:last-child, .three-fifth:last-child, .four-fifth:last-child, .sixth:last-child, .five-sixth:last-child {
+		margin-right:0;
+	}
+	/* CUSTOM ELEMENTS */
+	h3 {
+		font-size: 1.5em;
+	}
+	.recipe-ingredients {
+		margin-bottom:40px;
+	}
+}
+
+/* -----------------------
+	Smartphones
+   ----------------------- */
+@media screen and (max-width: 660px) {
+	.fg-row {
+		margin:0 17px;
+	}
+	.fg-col {
+		float:none;
+		padding:30px;
+	}
+	.half, .two-quarter, .three-sixth, .third, .two-sixth, .two-third, .four-sixth, .quarter, 
+	.three-quarter, .fifth, .two-fifth, .three-fifth, .four-fifth, .sixth, .five-sixth,
+	.half:last-child, .two-quarter:last-child, .three-sixth:last-child, .third:last-child, 
+	.two-sixth:last-child, .two-third:last-child, .four-sixth:last-child, .quarter:last-child, 
+	.three-quarter:last-child, .fifth:last-child, .two-fifth:last-child, .three-fifth:last-child, 
+	.four-fifth:last-child, .sixth:last-child, .five-sixth:last-child  {
+		width:100%;
+	}
+
+	/* CUSTOM ELEMENTS */
+	body {
+		background-size:100%;
+		width:100%;
+	}
+	header.main h1 {
+		font-size:1.5em;
+	}
+	header.main p {
+		font-size:.75em;
+	}
+	.recipe-subtitle {
+		font-size:.75em;
+	}
+
+}
