@@ -3,7 +3,7 @@ import React from 'react';
 const Landing = () => (
  	<section className="landing">
     	<header className="page-header fg-row clearfix">
-	    	<h2 className="hero-title">Turn the music up! <img src="/style/img/turn-the-volume-up.gif" /></h2>
+	    	<h2 className="hero-title">Turn the music up! <img src="%PUBLIC_URL%/style/img/turn-the-volume-up.gif" /></h2>
 		</header>
     
     	<section className="selling-points fg-row clearfix">
