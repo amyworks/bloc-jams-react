@@ -335,9 +335,20 @@ span.song-number:after {
 	content:counter(songIndex, decimal);
 }
 span.song-number:hover:after {
+	color:#f4426b;
 	content: '\f215';
 	font-family:"Ionicons";
 }
+			span.song-playing:after {
+				content: '\f210';
+				font-family:"Ionicons";
+			}
+			span.song-playing:hover:after {
+				color:#f4426b;
+				content: '\f210';
+				font-family:"Ionicons";
+			}
+
 .player-bar {
 	position:fixed;
 	bottom:0;
